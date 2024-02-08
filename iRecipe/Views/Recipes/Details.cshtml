@@ -1,0 +1,78 @@
+﻿@model Newtonsoft.Json.Linq.JObject
+
+@{
+
+    ViewData["Title"] = "Details";
+
+    var meal = Model["meals"]?.FirstOrDefault();
+
+    var sb = new System.Text.StringBuilder(); 
+}
+
+<h1>@meal?["strMeal"]</h1>
+
+<div>
+    <hr /> 
+    <div class="row">
+        
+    <dl class="row col-md-8 pe-3">
+        
+        <dt class="col-sm-2">
+            Category:
+        </dt>
+        <dd class="col-sm-10">
+            @meal?["strCategory"]
+        </dd>
+        <dt class="col-sm-2">
+            Cuisine:
+        </dt>
+        <dd class="col-sm-10">
+            @meal?["strArea"]
+        </dd>
+        <dt class="col-sm-2">
+            Ingridients:
+        </dt>
+        <dd class="col-sm-10">
+            <ul class="ps-3">
+            @for (int i = 1; i <= 20; i++) // Loop through the maximum possible number of ingredients (strIngredient1 to strIngredient20)
+            {
+                string ingredientKey = "strIngredient" + i;
+                string measureKey = "strMeasure" + i;
+
+                if (string.IsNullOrEmpty(meal[ingredientKey]?.ToString()))
+                {
+                    break;
+                }
+                else
+                {
+                    string ingredient = meal[ingredientKey].ToString();
+                    string measure = meal[measureKey].ToString();
+
+                    <li>@ingredient @measure</li>
+                }
+            }
+            </ul>
+        </dd>
+        <dt class="col-sm-2">
+            Instructions:
+        </dt>
+        <dd class="col-sm-10">
+            @meal?["strInstructions"]
+        </dd>
+        <dt class="col-sm-2">
+            Tags:
+        </dt>
+        <dd class="col-sm-10">
+            @meal?["strTags"]
+        </dd>
+            <div class="d-flex justify-content-center align-items-baseline mt-4">
+                <a class="btn btn-outline-primary px-3 py-1" asp-action="Add" asp-route-id="@meal["idMeal"]">Add Recipe</a>
+                <a asp-action="Index" class="ms-3">Back to List</a>
+            </div>
+    </dl>
+        <div class="col-md-4">
+            <img src="@meal?["strMealThumb"]" class="img-fluid rounded float-start" />
+        </div>
+    </div>
+</div>
+

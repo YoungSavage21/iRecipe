@@ -1,0 +1,43 @@
+﻿@model Newtonsoft.Json.Linq.JObject
+
+@{
+    ViewData["Title"] = "Result";
+}
+
+<h1>Result</h1>
+<hr />
+<div class="row">
+    <div class="col">
+        <form asp-action="SearchResult" class="w-100">
+            <div class="form-group d-flex justify-content-center">
+                <div class="input-group w-50 mt-3">
+                    <input type="text" class="form-control w-50 mx-auto" placeholder="Search for recipe" name="SearchQuery">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-2">
+    <p class="text-center">Search result for: @ViewBag.SearchQuery</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-2">
+    @foreach (var meal in Model["meals"])
+        {
+    <div class="col">
+        <div class="card h-100">
+                <img src="@meal["strMealThumb"]" class="card-img-top" alt="@meal["strMeal"]">
+            <div class="card-body">
+                    <h5 class="card-title">@meal["strMeal"]</h5>
+                    <p class="card-text mb-0 mt-4"><strong>Category: </strong>@meal["strCategory"]</p>
+                    <p class="card-text mb-0"><strong>Cuisine: </strong>@meal["strArea"]</p>
+            </div>
+            <div class="card-body pt-1">
+                    <a class="btn btn-outline-primary px-2 py-1" asp-action="Details" asp-route-id="@meal["idMeal"]">Details</a>
+            </div>
+        </div>
+    </div>
+    }
+</div>

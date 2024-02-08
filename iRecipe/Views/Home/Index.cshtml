@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    Layout = "../Shared/_LayoutFluid.cshtml"; 
+}
+
+<style>
+    .container-fluid{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .header {
+        width: 100%;
+        margin-top: -48px;
+        height: 100vh;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.555),#0b090a), url("https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&dpr=1");
+        background-position: center;
+        background-size: cover;
+    }
+</style>
+
+<div class="container-fluid px-0 header d-flex justify-content-center align-items-center">
+    <div class="row w-100 text-center ">
+        <h1 class="display-3 text-light">Welcome to iRecipe</h1>
+        <p class="text-light">Learn about new recipe with ease!</p>
+        <form asp-controller="Recipes" asp-action="SearchResult" class="w-100">
+            <div class="form-group d-flex justify-content-center">
+                <div class="input-group w-50 mt-3">
+                    <input type="text" class="form-control w-50 mx-auto" placeholder="Search for recipe" name="SearchQuery">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
