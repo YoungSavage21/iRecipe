@@ -1,6 +1,6 @@
 # iRecipe
 
-iRecipe is a web application designed for finding and managing recipes effectively. It's built using ASP.NET Core MVC framework, Entity Framework Core, JavaScript, and C#.
+iRecipe is a user-friendly web tool designed to help users discover and organize recipes efficiently. Developed using technologies like ASP.NET Core MVC framework, Entity Framework Core, JavaScript, and C#, iRecipe provides a seamless experience for cooking enthusiasts.
 
 ## What I Learned
 During the development of iRecipe, I acquired and applied various skills, including:
